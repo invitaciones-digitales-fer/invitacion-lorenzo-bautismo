@@ -82,12 +82,13 @@ body {
     top: 20px;
     right: 20px;
     z-index: 9999;
+   
 }
 
 #musicToggle {
    width: 60px;
     height: 60px;
-    background: rgba(212, 175, 55, 0.9); /* Fondo dorado translúcido */
+    background: rgbargb(224,198,133); /* Fondo dorado translúcido */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -95,11 +96,12 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 0.3s ease;
+     opacity: 0.8;
 }
 
 #musicToggle img {
-    width: 45px;
-    height: 45px;
+    width: 65px;
+    height: 65px;
     transition: transform 0.3s ease;}
 
 #musicToggle:hover {
