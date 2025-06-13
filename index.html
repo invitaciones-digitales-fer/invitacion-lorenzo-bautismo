@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bautismo de Lorenzo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@300;400;600&family=Crimson+Text:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- Overlay de Bienvenida -->
+    <div class="overlay" id="welcomeOverlay">
+        <div class="overlay-content">
+            <img src="img/dove.svg" alt="Paloma" class="overlay-icon">
+            <h1>Bienvenidos a la celebración del bautismo de Lorenzo</h1>
+            <button id="enterBtn">Entrar a la invitación</button>
+        </div>
+    </div>
+
+    <div class="music-controls">
+    <button id="musicToggle">
+        <img id="musicIcon" src="img/music-play.png" alt="Play Music">
+    </button>
+</div>
+
+
+    <main class="container">
+        <!-- Sección de Bienvenida -->
+        <section id="welcome">
+            <div class="welcome-container">
+                <h1 class="welcome-title">Lorenzo</h1>
+                <h2 class="welcome-subtitle">Celebración de Bautismo</h2>
+                <p class="welcome-text">Únete a nosotros en este día bendecido lleno de amor, fe y alegría.</p>
+                <blockquote class="welcome-quote">
+                    "Porque todos fuimos bautizados por un solo Espíritu para formar un solo cuerpo"
+                    <cite>1 Corintios 12:13</cite>
+                </blockquote>
+            </div>
+        </section>
+
+
+        <!-- Detalles del Evento -->
+        <section id="details">
+            <h3 class="details-title">Detalles del Evento</h3>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <strong>📅 Fecha:</strong> Domingo, 15 de Marzo, 2024
+                </div>
+                <div class="detail-card">
+                    <strong>⏰ Hora:</strong> 2:00 PM
+                </div>
+                <div class="detail-card">
+                    <strong>📍 Ubicación:</strong> Catedral Santa María, Ciudad
+                </div>
+            </div>
+            <button class="map-button" onclick="openMap()">📍 Ver en Google Maps</button>
+        </section>
+
+
+        <!-- Mensaje de los Padres -->
+        <section id="message">
+            <div class="message-container">
+                <h3 class="message-title">🌿 Bendiciones de la Familia</h3>
+                <p class="message-text">
+                    Nos sentimos profundamente bendecidos de compartir este hermoso momento de fe y unión.
+                    Su presencia hará que este día sea aún más especial.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- Confirmación de Asistencia -->
+        <section id="rsvp">
+            <h3 class="rsvp-title">✨ Confirma tu Asistencia</h3>
+            <form id="rsvpForm">
+                <label>Nombre de la Familia <input type="text" required></label>
+                <label>Correo Electrónico <input type="email" required></label>
+                <label>Número de Invitados x Grupo Familiar
+                    <input type="number" min="1" max="10" placeholder="Ejemplo: 2" required>
+                </label>
+
+
+                <label><input type="radio" name="attendance" value="yes" required> Sí, asistiremos</label>
+                <label><input type="radio" name="attendance" value="no" required> No podremos asistir</label>
+                <label>Mensaje de Bendiciones <textarea></textarea></label>
+                <button type="submit">Enviar Confirmación</button>
+            </form>
+            <div id="formSuccess" class="hidden">💖 ¡Gracias por confirmar tu asistencia!</div>
+        </section>
+
+
+
+        <!-- Mensaje Final -->
+        <section id="closing">
+            <h3>Que Lorenzo sea guiado por la fe y el amor. Gracias por acompañarnos.</h3>
+            <blockquote>"Este niño será consagrado al Señor todos los días de su vida."
+                <cite>1 Samuel 1:11</cite>
+            </blockquote>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bautismo de Lorenzo. Hecho con amor y fe.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="crownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#ffed4e;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#ffc107;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff8f00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gemGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e1bee7;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f8d7da;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fce4ec;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(255,215,0,0.3)"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Crown base -->
+  <path d="M10 55 L70 55 L65 65 L15 65 Z" 
+        fill="url(#crownGradient)" 
+        filter="url(#shadow)"/>
+  
+  <!-- Crown points -->
+  <path d="M10 55 L20 25 L25 40 L35 15 L40 35 L45 15 L55 35 L60 15 L70 25 L70 55" 
+        fill="url(#crownGradient)" 
+        filter="url(#shadow)"/>
+  
+  <!-- Central gem -->
+  <ellipse cx="40" cy="30" rx="6" ry="8" fill="url(#gemGradient)" filter="url(#glow)"/>
+  
+  <!-- Side gems -->
+  <ellipse cx="25" cy="35" rx="3" ry="4" fill="url(#gemGradient)" filter="url(#glow)"/>
+  <ellipse cx="55" cy="35" rx="3" ry="4" fill="url(#gemGradient)" filter="url(#glow)"/>
+  
+  <!-- Decorative details -->
+  <path d="M15 60 L25 60 L20 52 Z" fill="#ffed4e"/>
+  <path d="M55 60 L65 60 L60 52 Z" fill="#ffed4e"/>
+  <path d="M35 60 L45 60 L40 50 Z" fill="#ffed4e"/>
+  
+  <!-- Crown highlights -->
+  <path d="M12 53 L68 53" stroke="#fff" stroke-width="1" opacity="0.6"/>
+  <path d="M18 45 L22 30" stroke="#fff" stroke-width="1" opacity="0.4"/>
+  <path d="M37 20 L43 20" stroke="#fff" stroke-width="1" opacity="0.4"/>
+  <path d="M58 30 L62 45" stroke="#fff" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Sparkle effects -->
+  <circle cx="30" cy="25" r="1" fill="#fff" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="50" cy="30" r="1" fill="#fff" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="40" cy="45" r="0.5" fill="#fff" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+</svg>

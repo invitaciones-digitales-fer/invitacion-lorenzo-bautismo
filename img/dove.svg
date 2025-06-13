@@ -1,0 +1,72 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="doveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#e9ecef;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dee2e6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="beakGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffc107;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fd7e14;stop-opacity:1" />
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.1)"/>
+    </filter>
+  </defs>
+  
+  <!-- Dove body -->
+  <ellipse cx="40" cy="45" rx="18" ry="12" fill="url(#doveGradient)" filter="url(#shadow)"/>
+  
+  <!-- Dove head -->
+  <circle cx="28" cy="35" r="10" fill="url(#doveGradient)" filter="url(#shadow)"/>
+  
+  <!-- Wings -->
+  <path d="M40 35 Q60 25 70 40 Q65 50 50 45 Q45 40 40 35" 
+        fill="url(#doveGradient)" 
+        filter="url(#shadow)" 
+        opacity="0.9"/>
+  <path d="M35 40 Q20 30 10 45 Q15 55 25 50 Q30 45 35 40" 
+        fill="url(#doveGradient)" 
+        filter="url(#shadow)" 
+        opacity="0.7"/>
+  
+  <!-- Tail feathers -->
+  <path d="M55 48 Q70 55 75 65 Q70 70 60 65 Q55 55 55 48" 
+        fill="url(#doveGradient)" 
+        filter="url(#shadow)" 
+        opacity="0.8"/>
+  
+  <!-- Beak -->
+  <path d="M20 35 L15 37 L20 39 Z" fill="url(#beakGradient)"/>
+  
+  <!-- Eye -->
+  <circle cx="25" cy="32" r="2" fill="#2c3e50"/>
+  <circle cx="26" cy="31" r="0.5" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- Wing details -->
+  <path d="M42 38 Q55 32 65 42" stroke="#dee2e6" stroke-width="1" fill="none" opacity="0.6"/>
+  <path d="M44 42 Q52 38 58 44" stroke="#dee2e6" stroke-width="1" fill="none" opacity="0.6"/>
+  <path d="M32 42 Q25 38 18 44" stroke="#dee2e6" stroke-width="1" fill="none" opacity="0.6"/>
+  
+  <!-- Soft glow effects -->
+  <circle cx="40" cy="40" r="25" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.2" filter="url(#softGlow)"/>
+  
+  <!-- Animated sparkles around dove -->
+  <circle cx="15" cy="25" r="1" fill="#d4af37" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="65" cy="30" r="0.8" fill="#d4af37" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="50" cy="20" r="0.6" fill="#d4af37" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>

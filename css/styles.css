@@ -1,0 +1,417 @@
+/* Variables y ajustes generales */
+:root {
+    --heavenly-blue: #e6f3ff;
+    --sacred-gold: #d4af37;
+    --text-dark: #2c3e50;
+    --text-light: #5a6c7d;
+    --background-light: #faf9f7;
+    --shadow: rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Crimson Text', serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(180deg, var(--background-light), var(--heavenly-blue));
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Overlay de bienvenida */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255) 10%, var(--heavenly-blue) 90%);    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9999;
+    opacity: 1;
+}
+
+.overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Contenido del Overlay */
+.overlay-content {
+    position: relative;
+    max-width: 600px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo de la paloma */
+.overlay-icon {
+    width: 100px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7)); /* Sombra dorada */
+    animation: floatGlow 4s ease-in-out infinite;
+}
+
+@keyframes floatGlow {
+    0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7)); }
+    50% { transform: translateY(-35px); filter: drop-shadow(0 0 25px rgba(212, 175, 55, 1)); }
+}
+
+
+/* Título de bienvenida */
+.overlay-content h1 {
+   font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-shadow: 2px 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.music-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#musicToggle {
+   width: 60px;
+    height: 60px;
+    background: rgba(212, 175, 55, 0.9); /* Fondo dorado translúcido */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#musicToggle img {
+    width: 45px;
+    height: 45px;
+    transition: transform 0.3s ease;}
+
+#musicToggle:hover {
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
+    transform: scale(1.1);
+}
+
+/* Animación de vibración */
+@keyframes vibrate {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+}
+
+.music-controls:hover {
+    animation: vibrate 0.5s ease-in-out infinite;
+}
+
+
+/* Botón de ingreso */
+#enterBtn {
+    display: block;
+    background: var(--sacred-gold);
+    border: 2px solid var(--sacred-gold);
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px; /* Asegura espacio entre el título y el botón */
+}
+
+#enterBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
+}
+
+/* Ajustes de Botones */
+button {
+    background: var(--heavenly-blue);
+    border: 2px solid var(--sacred-gold);
+    padding: 15px 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background: #fff;
+}
+
+/* Contenedor principal */
+
+#welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, var(--heavenly-blue) 90%);
+}
+
+.welcome-container {
+    max-width: 800px;
+}
+
+.welcome-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--sacred-gold);
+    text-shadow: 2px 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.welcome-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.welcome-quote {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-top: 30px;
+    position: relative;
+}
+
+.welcome-quote cite {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+
+
+/* Secciones */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+}
+
+/* --------------------------------DETAILS-------------------------------------- */
+.details-grid {
+    display: flex;
+    flex-wrap: wrap; /* Evita que los elementos desaparezcan en pantallas pequeñas */
+    gap: 30px;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.detail-card {
+    background: #fff; /* Cambiado para evitar transparencias excesivas */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    min-width: 250px;
+    min-height: 80px; /* Asegura que el contenido sea visible */
+    text-align: center;
+    flex-grow: 1;
+}
+
+
+.detail-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+}
+
+.details-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--sacred-gold);
+}
+
+.map-button {
+    display: block;
+    margin: 100px auto 40px;
+    padding: 12px 20px;
+    background: var(--sacred-gold);
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    border: 2px solid var(--sacred-gold);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.map-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
+}
+
+/* ------------------------------MESSAGE------------------------------------ */
+#message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), var(--heavenly-blue));
+    position: relative;
+}
+
+.message-container {
+    max-width: 800px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.message-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--sacred-gold);
+    text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.3);
+    margin-bottom: 20px;
+}
+
+.message-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+}
+
+/* ---------------------------------------RSPV----------------------------------- */
+
+#rsvp {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), var(--heavenly-blue));
+}
+
+.rsvp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--sacred-gold);
+    margin-bottom: 30px;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--text-light);
+    border-radius: 10px;
+}
+
+button {
+    background: var(--sacred-gold);
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
+}
+
+#formSuccess {
+    font-size: 1.5rem;
+    color: var(--sacred-gold);
+    margin-top: 20px;
+    display: none;
+}
+
+
+
+
+/* Versículos y citas */
+#closing {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), var(--heavenly-blue));
+    position: relative;
+}
+
+#closing h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--sacred-gold);
+    text-shadow: 2px 2px 10px rgba(212, 175, 55, 0.3);
+    margin-bottom: 30px;
+}
+
+blockquote {
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Pie de página */
+footer {
+    background: var(--text-dark);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Adaptabilidad */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    section {
+        padding: 60px 10px;
+    }
+    form {
+        padding: 30px;
+    }
+}
