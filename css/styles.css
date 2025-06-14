@@ -1,10 +1,15 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500&family=Dancing+Script:wght@600&family=Cormorant+Garamond:wght@400;600&family=Crimson+Text:wght@400;600&display=swap');
+
 /* Variables y ajustes generales */
 :root {
-    --heavenly-blue: #e6f3ff;
-    --sacred-gold: #d4af37;
+    --heavenly-blue: #BFD7EA;
+    --sacred-gold: #ffbf09;
     --text-dark: #2c3e50;
     --text-light: #5a6c7d;
-    --background-light: #faf9f7;
+    --background-light: #F6F2E9;
     --shadow: rgba(0, 0, 0, 0.08);
 }
 
@@ -18,24 +23,30 @@ body {
     font-family: 'Crimson Text', serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background: linear-gradient(180deg, var(--background-light), var(--heavenly-blue));
+    background: linear-gradient(180deg, var(--background-light) 0%, var(--heavenly-blue) 100%);
     min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* Overlay de bienvenida */
+/* ======================
+   MOBILE FIRST STYLES
+====================== */
+
+/* Overlay de bienvenida - Mobile */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(255, 255, 255) 10%, var(--heavenly-blue) 90%);    display: flex;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 20%, var(--heavenly-blue) 80%);
+    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     z-index: 9999;
     opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 .overlay.hidden {
@@ -43,52 +54,60 @@ body {
     pointer-events: none;
 }
 
-/* Contenido del Overlay */
+/* Contenido del Overlay - Mobile */
 .overlay-content {
     position: relative;
-    max-width: 600px;
-    padding: 40px;
+    max-width: 90%;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-/* Estilo de la paloma */
+/* Estilo de la paloma - Mobile */
 .overlay-icon {
-    width: 100px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7)); /* Sombra dorada */
+    width: 120px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(255, 191, 9, 0.7));
     animation: floatGlow 4s ease-in-out infinite;
 }
 
 @keyframes floatGlow {
-    0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7)); }
-    50% { transform: translateY(-35px); filter: drop-shadow(0 0 25px rgba(212, 175, 55, 1)); }
+    0%, 100% {
+        transform: translateY(0);
+        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
+    }
+    50% {
+        transform: translateY(-20px);
+        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 1));
+    }
 }
 
-
-/* Título de bienvenida */
+/* Título de bienvenida - Mobile */
 .overlay-content h1 {
-   font-family: 'Playfair Display', serif;
-    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--text-dark);
-    text-shadow: 2px 2px 10px rgba(212, 175, 55, 0.3);
+    text-shadow: 2px 2px 8px rgba(255, 191, 9, 0.7);
+    margin-bottom: 20px;
 }
 
+/* Controles de música - Mobile */
 .music-controls {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 999;
     position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-   
 }
 
 #musicToggle {
-   width: 60px;
-    height: 60px;
-    background: rgbargb(224,198,133); /* Fondo dorado translúcido */
+    width: 50px;
+    height: 50px;
+    background: rgba(224, 198, 133, 0.1);
+    border: none;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -96,44 +115,49 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 0.3s ease;
-     opacity: 0.8;
+    opacity: 0.9;
 }
 
 #musicToggle img {
-    width: 65px;
-    height: 65px;
-    transition: transform 0.3s ease;}
+    width: 55px;
+    height: 55px;
+    transition: transform 0.3s ease;
+}
 
 #musicToggle:hover {
     box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
     transform: scale(1.1);
+    background: rgba(212, 175, 55, 1);
 }
 
-/* Animación de vibración */
-@keyframes vibrate {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(3px); }
+@keyframes vibrateY {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
 }
 
 .music-controls:hover {
-    animation: vibrate 0.5s ease-in-out infinite;
+    animation: vibrateY 0.5s ease-in-out infinite;
 }
 
-
-/* Botón de ingreso */
+/* Botón de ingreso - Mobile */
 #enterBtn {
     display: block;
     background: var(--sacred-gold);
     border: 2px solid var(--sacred-gold);
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    padding: 12px 25px;
+    font-size: 1.5rem;
+    font-weight: 900;
     color: white;
     font-family: 'Cormorant Garamond', serif;
-    border-radius: 30px;
+    border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 20px; /* Asegura espacio entre el título y el botón */
+    margin-top: 15px;
 }
 
 #enterBtn:hover {
@@ -141,133 +165,230 @@ body {
     box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
 }
 
-/* Ajustes de Botones */
+/* Ajustes generales de botones - Mobile */
 button {
     background: var(--heavenly-blue);
     border: 2px solid var(--sacred-gold);
-    padding: 15px 30px;
+    padding: 8px 15px;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    border-radius: 20px;
 }
 
 button:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     background: #fff;
 }
 
-/* Contenedor principal */
-
+/* Contenedor principal - Mobile */
 #welcome {
+     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 80px 20px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, var(--heavenly-blue) 90%);
+    padding: 30px 15px;
+    width: 100%;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+
+/* Video de fondo */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    /* opacity: 0.3; Transparencia para que el texto sea legible */
+}
+
+/* Overlay suave para mejorar legibilidad */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 10%, rgba(191, 215, 234, 0.7) 90%);
+    z-index: -1;
 }
 
 .welcome-container {
-    max-width: 800px;
+     position: relative;
+    z-index: 1;
+    max-width: 100%;
+    width: 100%;
+    padding: 15px;
 }
 
 .welcome-title {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--sacred-gold);
-    text-shadow: 2px 2px 10px rgba(212, 175, 55, 0.3);
+    text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.3);
+    margin-bottom: 15px;
 }
 
 .welcome-subtitle {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2rem;
     color: var(--text-dark);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 .welcome-quote {
-    font-style: italic;
-    font-size: 1.3rem;
+    font-family: 'Bonheur Royale';
+    font-size: 2rem;
     color: var(--text-dark);
-    margin-top: 30px;
+    margin-top: 20px;
     position: relative;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .welcome-quote cite {
     display: block;
-    font-weight: bold;
-    margin-top: 10px;
+    
+    margin-top: 8px;
+    font-size: 1.3rem;
+    font-family: 'Poppins', serif;
+}
+
+.welcome-text {
+   margin-bottom: 50px;
+    color: var(--text-dark);
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: auto;
-    padding: 20px;
+   
 }
 
+.welcome-container img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
 
-
-/* Secciones */
+/* Secciones - Mobile */
 section {
-    padding: 80px 0;
+    padding: 50px 15px;
     text-align: center;
 }
 
+/* Tipografías - Mobile */
 h1, h2, h3 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
 }
 
-/* --------------------------------DETAILS-------------------------------------- */
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+h3, blockquote {
+    font-family: 'Dancing Script', cursive;
+}
+
+p, li {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: var(--sacred-gold);
+}
+
+h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--heavenly-blue);
+}
+
+p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Detalles del evento - Mobile */
 .details-grid {
     display: flex;
-    flex-wrap: wrap; /* Evita que los elementos desaparezcan en pantallas pequeñas */
-    gap: 30px;
+    flex-direction: column;
+    gap: 20px;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
     width: 100%;
 }
 
 .detail-card {
-    background: #fff; /* Cambiado para evitar transparencias excesivas */
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px 15px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
-    min-width: 250px;
-    min-height: 80px; /* Asegura que el contenido sea visible */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-height: 80px;
     text-align: center;
-    flex-grow: 1;
+    font-size: 1.7rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
+strong {
+    font-size: 1.5rem;
+
+}
 
 .detail-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
 }
 
 .details-title {
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 40px;
-    color: var(--sacred-gold);
+    margin-bottom: 30px;
+    color: var(--text-dark);
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .map-button {
     display: block;
-    margin: 100px auto 40px;
+    margin: 30px auto;
     padding: 12px 20px;
     background: var(--sacred-gold);
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-family: 'Cormorant Garamond', serif;
     border: 2px solid var(--sacred-gold);
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    
 }
 
 .map-button:hover {
@@ -275,145 +396,482 @@ h1, h2, h3 {
     box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
 }
 
-/* ------------------------------MESSAGE------------------------------------ */
+/* Mensaje - Mobile */
 #message {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), var(--heavenly-blue));
+    padding: 60px 15px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, var(--heavenly-blue) 100%);
     position: relative;
 }
 
 .message-container {
-    max-width: 800px;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.8);
+    max-width: 100%;
+    padding: 0; /* Removemos padding para que el video ocupe todo */
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden; /* Para que el video respete los bordes redondeados */
 }
 
 .message-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
+    font-size: 2rem;
     font-weight: 700;
-    color: var(--sacred-gold);
-    text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.3);
-    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.762);
+    text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.5); /* Sombra más fuerte para legibilidad */
+    margin-bottom: 15px;
 }
-
 .message-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    color: var(--text-dark);
+    font-size: 1.1rem;
+    color: black;
+    font-weight: 700;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8); /* Sombra blanca para mejor legibilidad */
+    padding-inline: 1rem;
 }
 
-/* ---------------------------------------RSPV----------------------------------- */
+/* Estilos del video */
+.message-video {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
+.message-content {
+    position: relative;
+    z-index: 2;
+    padding: 25px 20px;
+    background: rgba(255, 255, 255, 0.7); /* Overlay semitransparente */
+    border-radius: 15px;
+}
+
+.baptism-video {
+    width: 85%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.baptism-video:hover {
+    transform: scale(1.02);
+}
+
+/* RSVP - Mobile */
 #rsvp {
     text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), var(--heavenly-blue));
+    padding: 60px 15px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, var(--heavenly-blue) 100%);
+        display: block; /* Asegura que el formulario sea visible */
 }
 
 .rsvp-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--sacred-gold);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 form {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 40px;
-    max-width: 500px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px 20px;
+    max-width: 100%;
     margin: auto;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+     transition: opacity 0.3s ease;
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 12px;
+    margin: 8px 0;
     border: 1px solid var(--text-light);
-    border-radius: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
 }
 
-button {
+form button {
     background: var(--sacred-gold);
     color: white;
-    padding: 15px;
-    font-size: 1.2rem;
+    padding: 15px 10px;
+    font-size: 1.5rem;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    width: 80%;
+    margin-top: 15px;
 }
 
-button:hover {
-    transform: scale(1.05);
+form button:hover {
+    transform: scale(1.02);
     box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
 }
 
 #formSuccess {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--sacred-gold);
     margin-top: 20px;
-    display: none;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    display: none; /* Oculto por defecto */
+    transition: all 0.3s ease;
+}
+
+#formSuccess.hidden {
+     display: none !important; /* Fuerza el ocultamiento */
+}
+
+/* Agrega estos estilos nuevos para el botón deshabilitado: */
+form button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+form button:disabled:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 
-
-
-/* Versículos y citas */
+/* Cierre/Versículos - Mobile */
 #closing {
     text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), var(--heavenly-blue));
+    padding: 60px 15px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, var(--heavenly-blue) 100%);
     position: relative;
 }
 
 #closing h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--sacred-gold);
-    text-shadow: 2px 2px 10px rgba(212, 175, 55, 0.3);
-    margin-bottom: 30px;
+    text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.3);
+    margin-bottom: 25px;
 }
 
 blockquote {
-    font-style: italic;
-    font-size: 1.5rem;
+    
+    font-size: 1.9rem;
     color: var(--text-dark);
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
 }
 
-
-
-/* Pie de página */
-footer {
-    background: var(--text-dark);
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Adaptabilidad */
-@media (max-width: 768px) {
+/* ======================
+   TABLET STYLES
+====================== */
+@media (min-width: 768px) {
+    .overlay-content {
+        max-width: 600px;
+        padding: 35px;
+    }
+    
+    .overlay-icon {
+        width: 80px;
+        margin-bottom: 20px;
+    }
+    
+    .overlay-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    #musicToggle {
+        width: 55px;
+        height: 55px;
+    }
+    
+    #musicToggle img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    #enterBtn {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+    
+    #welcome {
+        padding: 50px 30px;
+    }
+    
+    .welcome-title {
+        font-size: 3rem;
+    }
+    
+    .welcome-subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .welcome-quote {
+        font-size: 1.2rem;
+        max-width: 400px;
+        font-size: 3rem;
+    }
+    
     .container {
-        padding: 10px;
+        max-width: 800px;
+       
     }
+    
     section {
-        padding: 60px 10px;
+        padding: 70px 30px;
     }
+    
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    h3 {
+        font-size: 1.8rem;
+    }
+    
+    p {
+        font-size: 1.1rem;
+    }
+    
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 20px;
+    }
+    
+    .detail-card {
+        font-size: 1.2rem;
+        padding: 25px 20px;
+    }
+    
+    .details-title {
+        font-size: 2.8rem;
+    }
+    
+    .message-container {
+        max-width: 700px;
+        padding: 35px;
+    }
+    
+    .message-title {
+        font-size: 2.5rem;
+    }
+    
+    .message-text {
+        font-size: 1.3rem;
+    }
+    
+    .rsvp-title {
+        font-size: 2.3rem;
+    }
+    
     form {
+        max-width: 500px;
+        padding: 35px;
+    }
+    
+    form button {
+        width: auto;
+        padding: 15px 40px;
+    }
+    
+    #closing h3 {
+        font-size: 2.3rem;
+    }
+    
+    blockquote {
+        font-size: 1.4rem;
+        max-width: 600px;
+        padding: 25px 20px;
+    }
+
+    .message-content {
+        padding: 40px 35px;
+    }
+    
+    .message-container {
+        max-width: 600px;
+    }
+    
+    .baptism-video {
+        max-width: 350px;
+    }
+
+     #formSuccess {
+        font-size: 1.5rem;
+        padding: 25px;
+    }
+}
+
+
+/* ======================
+   DESKTOP STYLES
+====================== */
+@media (min-width: 1024px) {
+    .overlay-content {
+        max-width: 700px;
+        padding: 40px;
+    }
+    
+    .overlay-icon {
+        width: 100px;
+        margin-bottom: 25px;
+    }
+    
+    .overlay-content h1 {
+        font-size: 3.2rem;
+    }
+    
+    #musicToggle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    #musicToggle img {
+        width: 55px;
+        height: 55px;
+    }
+    
+    #enterBtn {
+        padding: 18px 35px;
+        font-size: 1.2rem;
+    }
+    
+    #welcome {
+        padding: 80px 40px;
+    }
+    
+    .welcome-title {
+        font-size: 3.5rem;
+    }
+    
+    .welcome-subtitle {
+        font-size: 2rem;
+    }
+    
+    
+    .container {
+        max-width: 1440px;
+       
+    }
+    
+    section {
+        padding: 80px 40px;
+    }
+    
+    h1 {
+        font-size: 3rem;
+    }
+    
+    h3 {
+        font-size: 2rem;
+    }
+    
+    p {
+        font-size: 1.2rem;
+    }
+    
+    .details-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+    }
+    
+    .detail-card {
+        font-size: 1.4rem;
+        padding: 30px 25px;
+    }
+    
+    .details-title {
+        font-size: 3rem;
+    }
+    
+    #message {
+        padding: 100px 40px;
+    }
+    
+    .message-container {
+        max-width: 800px;
+        padding: 40px;
+    }
+    
+    .message-title {
+        font-size: 2.8rem;
+    }
+    
+    .message-text {
+        font-size: 1.4rem;
+    }
+    
+    #rsvp {
+        padding: 80px 40px;
+    }
+    
+    .rsvp-title {
+        font-size: 2.5rem;
+    }
+    
+    form {
+        max-width: 500px;
+        padding: 40px;
+    }
+    
+
+    #formSuccess {
+        font-size: 1.6rem;
         padding: 30px;
+    }
+
+
+    #closing {
+        padding: 100px 40px;
+    }
+    
+    #closing h3 {
+        font-size: 2.5rem;
+    }
+    
+    blockquote {
+        font-size: 1.5rem;
+        max-width: 600px;
+        padding: 30px 25px;
+    }
+    
+    .detail-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    @keyframes floatGlow {
+        0%, 100% {
+            transform: translateY(0);
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7));
+        }
+        50% {
+            transform: translateY(-35px);
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 1));
+        }
+    }
+
+    .baptism-video {
+        max-width: 400px;
+    }
+
+    .background-video {
+        opacity: 0.4; /* Más visible en pantallas grandes */
     }
 }
