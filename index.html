@@ -20,7 +20,7 @@
     <!-- Overlay de Bienvenida -->
     <div class="overlay" id="welcomeOverlay">
         <div class="overlay-content">
-            <img src="img/dove.svg" alt="Paloma" class="overlay-icon">
+            <img src="img/dove.png" alt="Paloma" class="overlay-icon">
             <h1>Gracias por ser parte de este momento tan especial en la vida de Lorenzo</h1>
             <button id="enterBtn">Ingresar a la invitación</button>
         </div>
@@ -63,15 +63,15 @@
             <h3 class="details-title">Información del Encuentro</h3>
             <div class="details-grid">
                 <div class="detail-card">
-                    <img src="img/calendar.png" alt="calendar" width="100">
+                    <img src="img/calendar.png" alt="calendar" width="100" loading="lazy">
                     <strong> Fecha:</strong> Domingo, 15 de Marzo, 2024
                 </div>
                 <div class="detail-card">
-                    <img src="img/reloj.png" alt="reloj" width="100">
+                    <img src="img/reloj.png" alt="reloj" width="100" loading="lazy">
                     <strong> Hora:</strong> 2:00 PM
                 </div>
                 <div class="detail-card">
-                    <img src="img/ubicacion.png" alt="ubicacion" width="100">
+                    <img src="img/ubicacion.png" alt="ubicacion" width="100" loading="lazy">
                     <strong> Ubicación:</strong> Catedral Santa María, Ciudad
                 </div>
             </div>
@@ -105,7 +105,7 @@
             <form id="rsvpForm" action="https://formspree.io/f/mblyyryr" method="POST">
                 <label>Nombre de la Familia <input type="text" name="nombre" required></label>
                 <label>Correo Electrónico <input type="email" name="correo" required></label>
-                <label>Número de Invitados x Grupo Familiar
+                <label>Número de Invitados <br> (Grupo Familiar)
                     <input type="number" name="invitados" min="1" max="10" placeholder="Ejemplo: 2" required>
                 </label>
 
